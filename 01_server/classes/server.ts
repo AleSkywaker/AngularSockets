@@ -15,7 +15,13 @@ export default class Server {
     this.app = express();
     this.port = SERVER_PORT;
     this.httpServer = new http.Server(this.app);
-    this.io = socketIO(this.httpServer);
+    this.io = require('socket.io')(this.httpServer, {
+      cors: {
+        origin: 'http://localhost:4200',
+        methods: ['GET', 'POST'],
+        credentials: true,
+      },
+    });
     this.escucharSocket();
   }
 
