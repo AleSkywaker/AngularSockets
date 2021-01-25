@@ -9,8 +9,7 @@ export class WebsocketService {
   public socketStatus = false;
   private socket: any;
   constructor() {
-    // this.socket = io(environment.wsUrl);
-    this.socket = io('http://localhost:3600');
+    this.socket = io(environment.wsUrl);
     this.checkStatus();
   }
   checkStatus() {

@@ -18,7 +18,6 @@ export default class Server {
     this.io = require('socket.io')(this.httpServer, {
       cors: {
         origin: 'http://localhost:4200',
-        methods: ['GET', 'POST'],
         credentials: true,
       },
     });
@@ -31,8 +30,8 @@ export default class Server {
   }
   private escucharSocket() {
     console.log('Escuchando conexiones');
-    this.io.on('connection', (cliente) => {
-      console.log('cliente conectado');
+    this.io.on('connection', () => {
+      console.log('cliente de angular conectado');
     });
   }
 
